@@ -31,3 +31,5 @@ jobs:
         with:
           input: finish/tutorial-lint/proto
           token: ${{ secrets.BUF_TOKEN }}
+
+          

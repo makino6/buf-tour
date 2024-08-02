@@ -1,3 +1,55 @@
+// syntax = "proto3";
+
+// package pet.v1;
+
+// import "google/type/datetime.proto";
+
+// // PetType represents the different types of pets in the pet store.
+// enum PetType {
+//   PET_TYPE_UNSPECIFIED = 0;
+//   PET_TYPE_CAT = 1;
+//   PET_TYPE_DOG = 2;
+//   PET_TYPE_SNAKE = 3;
+//   PET_TYPE_HAMSTER = 4;
+// }
+
+// // Pet represents a pet in the pet store.
+// message Pet {
+//   PetType pet_type = 1;
+//   string pet_id = 2;
+//   string name = 3;
+//   google.type.DateTime created_at = 4;
+// }
+
+// message GetPetRequest {
+//   string pet_id = 1;
+// }
+
+// message GetPetResponse {
+//   Pet pet = 1;
+// }
+
+// message PutPetRequest {
+//   // PetType pet_type = 1;
+//   string name = 1;
+// }
+
+// message PutPetResponse {
+//   // Pet pet = 1;
+//   string name = 1;
+// }
+
+// message DeletePetRequest {
+//   string pet_id = 1;
+// }
+
+// message DeletePetResponse {}
+
+// service PetStoreService {
+//   rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
+//   rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
+//   rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
+// }
 syntax = "proto3";
 
 package pet.v1;
@@ -18,7 +70,9 @@ message Pet {
   PetType pet_type = 1;
   string pet_id = 2;
   string name = 3;
-  google.type.DateTime created_at = 4;
+  string age =4;
+  google.type.DateTime created_at = 5;
+  google.type.DateTime updated_at = 6;
 }
 
 message GetPetRequest {
@@ -30,22 +84,33 @@ message GetPetResponse {
 }
 
 message PutPetRequest {
-  PetType pet_type = 1;
-  string name = 2;
+  PetType pet_type = 1; // Re-added PetType field
+  string name = 2; // Updated to include pet name
+  string age =3;
 }
 
 message PutPetResponse {
-  Pet pet = 1;
+  PetType pet_type = 1; // Updated to return a Pet object
+  string name = 2;
+  string age =3;
+}
+
+
+message ListPetsRequest {}
+
+message ListPetsResponse {
+  repeated Pet pets = 1; // List of pets
 }
 
 message DeletePetRequest {
-  string petID = 1;
+  string pet_id = 1;
 }
 
 message DeletePetResponse {}
 
-service PetStore {
+service PetStoreService {
   rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
   rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
+  rpc ListPets(ListPetsRequest) returns (ListPetsResponse) {} // Added ListPets method
   rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
 }

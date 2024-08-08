@@ -46,7 +46,7 @@ async function App() {
   ))as PutPetResponse;
   console.log(putResponse);
     // putResponseからpetTypeも出力（putResponseの構造に依存）
-    console.log(`PetType: ${putResponse.type}`);
+    console.log(`PetType: ${putResponse.petType}`);
 
   // ListPetsを呼び出してペットのリストを取得
   const listResponse = await client.listPets(new ListPetsRequest());

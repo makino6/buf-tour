@@ -72,7 +72,6 @@ message Pet {
   string name = 3;
   string age =4;
   google.type.DateTime created_at = 5;
-  google.type.DateTime updated_at = 6;
 }
 
 message GetPetRequest {

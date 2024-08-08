@@ -11,11 +11,38 @@ plugins:
   - remote: buf.build/connectrpc/go
     out: gen
     opt: paths=source_relative
+
   - remote: buf.build/connectrpc/es:v1.4.0
     out: react-ts/src/gen
     opt: target=ts
-  - remote: buf.build/bufbuild/es
+  - remote: buf.build/bufbuild/es:v1.10.0
     out: react-ts/src/gen
     opt: target=ts
 inputs:
   - directory: proto
+
+# version: v2
+# managed:
+#   enabled: true
+#   override:
+#     - file_option: go_package_prefix
+#       value: github.com/bufbuild/buf-tour/gen
+# plugins:
+#   - remote: buf.build/protocolbuffers/go
+#     out: gen
+#     opt: paths=source_relative
+#   - remote: buf.build/connectrpc/go
+#     out: gen
+#     opt: paths=source_relative
+
+#   # This will invoke protoc-gen-es and write output to src/gen
+#   - local: buf.build/connectrpc/es:v1.4.0
+#     out: react-ts/src/gen
+#     opt: target=ts
+#   # This will invoke protoc-gen-connect-es
+#   - local: buf.build/bufbuild/es
+#     out: react-ts/src/gen
+#     # Add more plugin options here
+#     opt: target=ts
+# inputs:
+#   - directory: proto

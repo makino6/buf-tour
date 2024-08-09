@@ -46,11 +46,9 @@ import { Duration, Message, proto3 } from "@bufbuild/protobuf";
  * This type is more flexible than some applications may want. Make sure to
  * document and validate your application's limitations.
  *
- 
  * @generated from message google.type.DateTime
  */
 export class DateTime extends Message<DateTime> {
-  
   /**
    * Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
    * datetime without a year.
@@ -183,7 +181,6 @@ export class TimeZone extends Message<TimeZone> {
    *
    * @generated from field: string id = 1;
    */
-  
   id = "";
 
   /**
@@ -221,6 +218,4 @@ export class TimeZone extends Message<TimeZone> {
     return proto3.util.equals(TimeZone, a, b);
   }
 }
-
-
 
